@@ -8,6 +8,7 @@ class BooksTableViewController: UITableViewController {
     
     let url: String = "https://dapi.kakao.com/v3/search/book?target=title"
     var bookList: [Information] = []
+    var bookArray: [BookData] = []
     
     let realm = try! Realm()
     var book = BookData(title: "", author: "", price: 0, thumbnail: "")
@@ -18,17 +19,20 @@ class BooksTableViewController: UITableViewController {
     }
     
     func getDataStorage() {
-        let books = realm.objects(BookData.self)
+        let books = Array(realm.objects(BookData.self))
         
         for index in 0..<bookList.count {
             book = BookData(title: bookList[index].title, author: bookList[index].authors.first!,
                             price: bookList[index].price, thumbnail: bookList[index].thumbnail)
             
-            try! realm.write {
-                realm.add(book)
-            }
+            // try! realm.write {
+            //     realm.add(book)
+            // }
+        
+        bookArray = books
+        print(bookArray)
+        print(bookArray.count)
         }
-        print(books)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,11 +42,11 @@ class BooksTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath) as? BookCell else { return UITableViewCell() }
         
-        cell.title.text = bookList[indexPath.row].title
-        cell.price.text = String(bookList[indexPath.row].price)
-        cell.author.text = bookList[indexPath.row].authors.first
+        cell.title.text = bookArray[indexPath.row].title
+        cell.price.text = String(bookArray[indexPath.row].price)
+        cell.author.text = bookArray[indexPath.row].author
         
-        if let imageURL = URL(string: bookList[indexPath.row].thumbnail) {
+        if let imageURL = URL(string: bookArray[indexPath.row].thumbnail) {
             cell.bookImage.kf.setImage(with: imageURL)
         } else {
             cell.bookImage.image = UIImage(named: "kingfisher-7")

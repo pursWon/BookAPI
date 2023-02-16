@@ -16,3 +16,5 @@ class BookData: Object {
         self.thumbnail = thumbnail
     }
 }
+
+
