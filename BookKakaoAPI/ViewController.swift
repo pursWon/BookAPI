@@ -1,6 +1,7 @@
 import UIKit
 import Alamofire
 import Kingfisher
+import RealmSwift
 
 class BooksTableViewController: UITableViewController {
     @IBOutlet var booksTableView: UITableView!
@@ -8,9 +9,26 @@ class BooksTableViewController: UITableViewController {
     let url: String = "https://dapi.kakao.com/v3/search/book?target=title"
     var bookList: [Information] = []
     
+    let realm = try! Realm()
+    var book = BookData(title: "", author: "", price: 0, thumbnail: "")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getBookData()
+    }
+    
+    func getDataStorage() {
+        let books = realm.objects(BookData.self)
+        
+        for index in 0..<bookList.count {
+            book = BookData(title: bookList[index].title, author: bookList[index].authors.first!,
+                            price: bookList[index].price, thumbnail: bookList[index].thumbnail)
+            
+            try! realm.write {
+                realm.add(book)
+            }
+        }
+        print(books)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,14 +67,14 @@ class BooksTableViewController: UITableViewController {
         
         AF.request(url, method: .get, parameters: parameters, headers: headers).responseDecodable(of: Book.self) { response in
             if let data = response.value {
-                print(data.documents)
                 self.bookList = data.documents
-                print(self.bookList.count)
+                
             } else {
-            print("통신 실패")
+                print("통신 실패")
             }
             
             DispatchQueue.main.async {
+                self.getDataStorage()
                 self.booksTableView.reloadData()
             }
         }
