@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="elz-SH-iby">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20037"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,31 +39,21 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="저자 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9l-Ib-W6E" userLabel="authors">
-                                            <rect key="frame" x="140" y="40" width="200" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="Z5B-hL-1kZ" secondAttribute="trailing" constant="50" id="7Oq-2z-M2O"/>
                                         <constraint firstItem="xhH-fC-eXM" firstAttribute="top" secondItem="Eiw-BP-J6G" secondAttribute="top" constant="70" id="9am-jx-41Y"/>
                                         <constraint firstAttribute="trailing" secondItem="o4e-hW-sCI" secondAttribute="trailing" constant="270" id="Bju-Cd-ywK"/>
                                         <constraint firstItem="Z5B-hL-1kZ" firstAttribute="top" secondItem="Eiw-BP-J6G" secondAttribute="top" constant="10" id="FnI-VI-Fe6"/>
-                                        <constraint firstItem="V9l-Ib-W6E" firstAttribute="top" secondItem="Eiw-BP-J6G" secondAttribute="top" constant="40" id="QR5-yO-SUG"/>
                                         <constraint firstItem="o4e-hW-sCI" firstAttribute="leading" secondItem="Eiw-BP-J6G" secondAttribute="leading" constant="20" symbolic="YES" id="QRr-2Z-wBQ"/>
                                         <constraint firstItem="o4e-hW-sCI" firstAttribute="top" secondItem="Eiw-BP-J6G" secondAttribute="top" constant="20" id="dlY-7n-TNm"/>
                                         <constraint firstItem="o4e-hW-sCI" firstAttribute="centerY" secondItem="Eiw-BP-J6G" secondAttribute="centerY" id="epd-87-icY"/>
-                                        <constraint firstAttribute="trailing" secondItem="V9l-Ib-W6E" secondAttribute="trailing" constant="50" id="mTX-fA-G0X"/>
                                         <constraint firstAttribute="trailing" secondItem="xhH-fC-eXM" secondAttribute="trailing" constant="50" id="ngQ-u1-aGC"/>
                                         <constraint firstItem="xhH-fC-eXM" firstAttribute="leading" secondItem="o4e-hW-sCI" secondAttribute="trailing" constant="20" id="s5E-hY-CuA"/>
                                         <constraint firstItem="Z5B-hL-1kZ" firstAttribute="leading" secondItem="o4e-hW-sCI" secondAttribute="trailing" constant="20" id="xo0-GJ-ISA"/>
-                                        <constraint firstItem="V9l-Ib-W6E" firstAttribute="leading" secondItem="o4e-hW-sCI" secondAttribute="trailing" constant="20" id="zoo-WP-ZIc"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="author" destination="V9l-Ib-W6E" id="qOk-Vm-eDg"/>
                                     <outlet property="bookImage" destination="o4e-hW-sCI" id="5iW-Yc-c0l"/>
                                     <outlet property="price" destination="xhH-fC-eXM" id="XpO-q8-1In"/>
                                     <outlet property="title" destination="Z5B-hL-1kZ" id="v5x-N3-kEQ"/>
